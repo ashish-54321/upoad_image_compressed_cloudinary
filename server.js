@@ -11,10 +11,11 @@ app.use(express.json());
 // ✅ Enable CORS
 app.use(
     cors({
-        origin: 'https://blog-news-admin.netlify.app/upload',
+        origin: 'https://blog-news-admin.netlify.app',
         methods: ['GET', 'POST'],
     })
 );
+
 
 // ✅ Cloudinary Config
 cloudinary.config({
@@ -156,5 +157,6 @@ app.get('/api/health', (req, res) => res.json({ ok: true, timestamp: Date.now() 
 // ✅ Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
 
 

@@ -8,6 +8,9 @@ const cors = require('cors');
 const app = express();
 app.use(express.json());
 
+// ✅ Health check
+app.get('/api/health', (req, res) => res.json({ ok: true, timestamp: Date.now() }));
+
 // ✅ Enable CORS
 app.use(
     cors({
@@ -151,12 +154,12 @@ app.post('/api/upload-image', upload.single('image'), async (req, res) => {
     }
 });
 
-// ✅ Health check
-app.get('/api/health', (req, res) => res.json({ ok: true, timestamp: Date.now() }));
+
 
 // ✅ Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
 
 
 
